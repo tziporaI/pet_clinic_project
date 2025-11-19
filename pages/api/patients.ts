@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "@/lib/db";
-import { IPatient } from "@/lib/interfaces";
+import { IPatient, IPatientInput } from "@/lib/interfaces";
 import { ObjectId } from "mongodb";
 
 interface PatientResult {
@@ -22,10 +22,11 @@ export default async function handler(
 
 const create = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    
     const client = await clientPromise;
     const db = client.db(process.env.MONGODB_DB_NAME);
 
-    const data = req.body as IPatient;
+    const data = req.body as IPatientInput;
 
     const result = await db.collection("patients").insertOne(data);
 
