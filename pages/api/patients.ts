@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "@/lib/db";
 import { IPatient, IPatientInput } from "@/lib/interfaces";
 import { ObjectId } from "mongodb";
+import { validatePatientInput } from "@/lib/validators/patientValidator";
 
 interface PatientResult {
   patients?: Array<IPatient> | IPatient;
@@ -21,8 +22,12 @@ export default async function handler(
 }
 
 const create = async (req: NextApiRequest, res: NextApiResponse) => {
+  
   try {
-    
+     const error = validatePatientInput(req.body);
+    if (error) {
+      return res.status(400).json({ message: error });
+    }
     const client = await clientPromise;
     const db = client.db(process.env.MONGODB_DB_NAME);
 
@@ -37,6 +42,11 @@ const create = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 const update = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+        const error = validatePatientInput(req.body);
+    if (error) {
+      return res.status(400).json({ message: error });
+    }
+
     const client = await clientPromise;
     const db = client.db(process.env.MONGODB_DB_NAME);
 
@@ -46,6 +56,7 @@ const update = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const updatedPatient = req.body as IPatient;
+    delete (updatedPatient as any)._id;
 
     const result = await db
       .collection("patients")
@@ -53,6 +64,8 @@ const update = async (req: NextApiRequest, res: NextApiResponse) => {
         { _id: new ObjectId(id as string) }, 
         { $set: updatedPatient }            
       );
+
+
 
     if (result.matchedCount === 0) {
       return res.status(404).json({ message: "Patient not found" });
