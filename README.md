@@ -1,32 +1,154 @@
-# Pet Clinic
+# 🐾 Pet Clinic Management System
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A modern, responsive web application for managing pet clinic patients built with Next.js, React, MongoDB, and Tailwind CSS.
 
-## Getting Started
+## ✨ Features
 
-First, install dependencies:
+- **Patient Management**: Add, edit, and delete patient records
+- **Search & Filter**: Search by owner name or pet name, filter by pet type
+- **Real-time Validation**: Client-side and server-side validation
+- **Responsive Design**: Works seamlessly on mobile and desktop devices
+- **Keyboard Accessible**: Full keyboard navigation support
+- **Modern UI**: Clean, professional design with smooth animations
 
-```bash
-yarn install
+## 🚀 Tech Stack
+
+- **Frontend**: Next.js 13+ (React 18)
+- **Database**: MongoDB Atlas
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+
+## 📋 Prerequisites
+
+- Node.js 16.x or higher
+- npm or yarn package manager
+- MongoDB Atlas account (free tier available)
+
+## 🛠️ Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd pet-clinic
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Set up environment variables**
+   
+   Create a `.env.local` file in the root directory:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   MONGODB_DB_NAME=pet_clinic
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+```
+pet-clinic/
+├── components/
+│   ├── AddPatientModal.tsx
+│   ├── EditPatientModal.tsx
+│   ├── DeleteConfirmModal.tsx
+│   ├── PatientsTable.tsx
+│   └── pet-clinic-dashboard.tsx
+├── hooks/
+│   └── usePatientValidation.ts
+├── lib/
+│   ├── db.ts
+│   ├── interfaces.ts
+│   └── validators/
+│       ├── patientValidator.ts
+│       └── patientClientValidator.ts
+├── pages/
+│   ├── api/
+│   │   └── patients.ts
+│   ├── _app.tsx
+│   └── index.tsx
+├── styles/
+│   └── globals.css
+└── tailwind.config.js
 ```
 
-Then, run the development server:
+## 🎨 Design Highlights
 
-```bash
-yarn dev
+- **Color Scheme**: Emerald and Teal gradients for a modern, medical feel
+- **Typography**: Clean, readable fonts with proper hierarchy
+- **Icons**: SVG icons for scalability and performance
+- **Animations**: Smooth fade-in and slide-up effects
+- **Accessibility**: High contrast ratios and keyboard navigation
+
+## 🔧 Configuration
+
+### Tailwind CSS
+
+Colors and spacing are configured in `tailwind.config.js`:
+
+```javascript
+colors: {
+  primary: '#10b981',    // emerald-500
+  secondary: '#14b8a6',  // teal-500
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Validation Rules
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **Name**: Letters and spaces only
+- **Phone**: Must be 10 digits starting with "05"
+- **Pet Name**: Letters and spaces only
+- **Birth Date**: Cannot be in the future
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/patients](http://localhost:3000/api/pateints). This endpoint can be edited in `pages/api/pateints.ts`.
+## 📱 Responsive Breakpoints
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
 
-## Learn More
+## 🔐 API Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+- `GET /api/patients` - Fetch all patients
+- `POST /api/patients` - Create new patient
+- `PUT /api/patients?id={id}` - Update patient
+- `DELETE /api/patients?id={id}` - Delete patient
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🐛 Troubleshooting
+
+### MongoDB Connection Issues
+
+Make sure your MongoDB Atlas connection string is correct and your IP is whitelisted.
+
+### Build Errors
+
+Try clearing the Next.js cache:
+```bash
+rm -rf .next
+npm run dev
+```
+
+## 📝 License
+
+This project is for educational purposes.
+
+## 👥 Contributors
+
+Developed as part of a coding assignment.
+
+---
+
+**Note**: Make sure to never commit your `.env.local` file to version control!
