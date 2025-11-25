@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 const uri = process.env.MONGODB_URI as string;
 
 if (!uri) {
-  throw new Error("Please add MONGODB_URI to your .env.local");
+  throw new Error("MONGODB_URI is not defined in environment variables");
 }
 
 let client: MongoClient;
@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === "development") {
   }
   clientPromise = globalWithMongo._mongoClientPromise;
 } else {
+  // Production - Render
   client = new MongoClient(uri);
   clientPromise = client.connect();
 }
