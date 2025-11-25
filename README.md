@@ -1,7 +1,16 @@
 # 🐾 Pet Clinic Management System
 
 A modern, responsive web application for managing pet clinic patients built with Next.js, React, MongoDB, and Tailwind CSS.
+## 🌐 Live Demo
+The application is live and deployed on Render:
+**[https://pet-clinic-project-or4y.onrender.com/](https://pet-clinic-project-or4y.onrender.com/)**
 
+### Deployment Information
+- **Hosting Platform**: Render
+- **Database**: MongoDB Atlas (cloud-hosted with secure connection)
+- **Continuous Deployment**: Automatically updates from the main branch
+- **SSL/HTTPS**: Enabled by default for secure data transmission
+  
 ## ✨ Features
 
 - **Patient Management**: Add, edit, and delete patient records
