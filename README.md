@@ -3,7 +3,7 @@
 A modern, responsive web application for managing pet clinic patients built with Next.js, React, MongoDB, and Tailwind CSS.
 ## 🌐 Live Demo
 The application is live and deployed on Render:
-**[https://pet-clinic-project-or4y.onrender.com/](https://pet-clinic-project-or4y.onrender.com/)**
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Render-blue?style=for-the-badge)](https://pet-clinic-project-or4y.onrender.com/)
 
 ### Deployment Information
 - **Hosting Platform**: Render
